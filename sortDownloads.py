@@ -9,6 +9,9 @@ Description : This script will sort through my Downloads folder for me on my Win
 
 import shutil, os           # shutil --> to copy, move, rename, and delete files
 from pathlib import Path    # Path to working directory
+import logging              # For debugging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')        # add filename arg to save to file
+logging.disable(logging.CRITICAL)       # disables logs from being outputted (disables CRITICAL level calls and lower)
 
 p = Path.home() 
 
@@ -40,4 +43,6 @@ for filename in downloadFiles:
 # send2trash module (3rd party, installed via 'pip install send2trash')
 # send2trash.send2trash("filename")
 
+logging.info("The program is working as intended.")
 print(f"{mvctr} files moved, {delctr} files deleted.")
+
